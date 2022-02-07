@@ -43,10 +43,10 @@ def get_butterfly(url):
     wing_span = soup.find('li', text=re.compile(r'Wing Span:*'))
 
     return {'name' : name, 
+            'url': url,
             'family': peel_data_from_element(family),
-            'size': peel_data_from_element(size),
             'wing span': peel_data_from_element(wing_span),
-            'url': url}
+            'size': peel_data_from_element(size)}
 
 def process_each_link(url):
     for url in urls:

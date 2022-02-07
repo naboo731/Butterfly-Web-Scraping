@@ -1,4 +1,5 @@
 # import libraries needed: requests and beautifulsoup.
+from multiprocessing import process
 import requests 
 from bs4 import BeautifulSoup
 import re
@@ -50,7 +51,6 @@ def get_butterfly(url):
 def process_each_link(url):
     for url in urls:
        list = get_butterfly(url)
-
     return list
 
 def write_csv(list):
@@ -61,9 +61,11 @@ def write_csv(list):
 
     for row in csv_content:
         csv_writer.writerow(row)
+        print(row['name'], row['url'], row['family'], row['wing span'], row['size'])
     
     csv_file.close()
 
+process_each_link(urls)
 
 
 
